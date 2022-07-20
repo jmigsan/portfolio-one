@@ -18,10 +18,10 @@ const NavLink: React.FC<{ text: string; link: string }> = ({ text, link }) => (
     rounded={'md'}
     _hover={{
       textDecoration: 'none',
-      bg: 'gray.100',
+      bg: 'white',
     }}
   >
-    {text} {link}
+    {text}
   </Link>
 );
 
@@ -42,11 +42,11 @@ const NavBar = () => {
 
   return (
     <>
-      <Box bg={'white'} px={4}>
+      <Box bg={'background.100'} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
           <HStack spacing={8} alignItems={'center'}>
             <TitleLink />
-            <HStack
+            {/* <HStack
               as={'nav'}
               spacing={4}
               display={{ base: 'none', md: 'flex' }}
@@ -55,9 +55,9 @@ const NavBar = () => {
               <NavLink text='Dashboard' link='yo' />
               <NavLink text='Portfolio' link='yo' />
               <NavLink text='Invest' link='yo' />
-            </HStack>
+            </HStack> */}
           </HStack>
-          <IconButton
+          {/* <IconButton
             size={'md'}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
             aria-label={'Open Menu'}
@@ -66,9 +66,9 @@ const NavBar = () => {
             bg={'white'}
             _hover={{ bg: 'gray.100' }}
             _expanded={{ bg: 'gray.100' }}
-          />
+          /> */}
         </Flex>
-        {isOpen ? (
+        {/* {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
               <NavLink text='Your Logs' link='yo' />
@@ -77,7 +77,7 @@ const NavBar = () => {
               <NavLink text='Invest' link='yo' />
             </Stack>
           </Box>
-        ) : null}
+        ) : null} */}
       </Box>
     </>
   );

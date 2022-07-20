@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import { Box, Center, Text } from '@chakra-ui/react';
+import { Box, Center, Link, Text, Stack } from '@chakra-ui/react';
 import NavBar from '../components/All/NavBar';
 
 const Home: NextPage = () => {
@@ -18,9 +18,12 @@ const Home: NextPage = () => {
       <NavBar />
 
       <Box>
-        <Center>
-          <Text>yo</Text>
-        </Center>
+        <Box pl={20} pt={18}>
+          <Stack>
+            <Link>Portfolio</Link>
+            <Link>About</Link>
+          </Stack>
+        </Box>
       </Box>
     </>
   );
