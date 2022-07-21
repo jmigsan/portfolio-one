@@ -5,7 +5,11 @@ import { Box, Link, Stack, Heading } from '@chakra-ui/react';
 import { trpc } from '@/utils/trpc';
 
 const HomeLink: React.FC<{ text: string }> = ({ text }) => (
-  <Link fontSize={{ base: '5xl', md: '5xl' }} pl={11} py={{ base: 3, md: 6 }}>
+  <Link
+    fontSize={{ base: '5xl', md: '5xl' }}
+    pl={{ base: 28, md: 52 }}
+    py={{ base: 3, md: 5 }}
+  >
     {text}
   </Link>
 );
@@ -27,7 +31,7 @@ const Home: NextPage = () => {
           Juan Miguel Sanchez
         </Heading>
 
-        <Box pl={24} pt={{ base: 0, md: 14 }}>
+        <Box pt={{ base: 0, md: 10 }}>
           <Stack>
             <HomeLink text='Portfolio'></HomeLink>
             <HomeLink text='About'></HomeLink>
