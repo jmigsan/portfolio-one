@@ -28,7 +28,7 @@ const Home: NextPage = () => {
       </Head>
       <Box>
         <Heading fontSize={'6xl'} p={10}>
-          Juan Miguel Sanchez
+          <Link>Juan Miguel Sanchez</Link>
         </Heading>
 
         <Box pt={{ base: 0, md: 10 }}>
