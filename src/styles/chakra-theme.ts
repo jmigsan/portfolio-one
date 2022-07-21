@@ -12,7 +12,11 @@ const theme = extendTheme({
     background: {
       100: '#ecf0f1',
     },
-  }
+  },
+  fonts: {
+    heading: `'Biryani', sans-serif`,
+    body: `'Biryani', sans-serif`,
+  },
 });
 
 export default theme;
