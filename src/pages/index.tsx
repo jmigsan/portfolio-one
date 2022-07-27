@@ -34,7 +34,7 @@ const Home: NextPage = () => {
 
         <Box pt={{ base: 0, md: 10 }}>
           <Stack>
-            <HomeLink link='portfolio' text='Portfolio' />
+            <HomeLink link='/' text='Portfolio' />
             <HomeLink link='about' text='About' />
             <HomeLink link='https://github.com/jmigsan' text='GitHub' />
             <HomeLink
