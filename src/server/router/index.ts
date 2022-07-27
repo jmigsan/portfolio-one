@@ -1,6 +1,7 @@
 import * as trpc from '@trpc/server';
 import { z } from 'zod';
 import axios from 'axios';
+import { prisma } from '@/server/utils/prisma';
 
 export const appRouter = trpc
   .router()
@@ -23,6 +24,22 @@ export const appRouter = trpc
       return {
         greeting: `hello ${input?.text ?? 'world'}`,
       };
+    },
+  })
+  .mutation('comment', {
+    input: z.object({
+      author: z.string(),
+      content: z.string(),
+    }),
+    async resolve({ input }) {
+      const commentToDb = await prisma.comment.create({
+        data: {
+          author: input.author,
+          content: input.content,
+        },
+      });
+
+      return { success: true, comment: commentToDb };
     },
   });
 
