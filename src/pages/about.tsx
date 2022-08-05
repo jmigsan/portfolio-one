@@ -1,20 +1,24 @@
-import type { NextPage } from 'next';
+import type { GetServerSideProps } from 'next';
+import { prisma } from '@/server/utils/prisma';
 import Head from 'next/head';
-
 import {
   Box,
-  Button,
+  Divider,
   Heading,
   HStack,
-  Input,
   Link as ChakraLink,
   Stack,
   Text,
 } from '@chakra-ui/react';
 import FavThings from '@/components/About/FavThings';
 import Link from 'next/link';
+import CatFactForm from '@/components/About/CatFactForm';
+import CommentForm from '@/components/About/CommentForm';
+import { AsyncReturnType } from '@/server/utils/ts-ahh';
 
-const Home: NextPage = () => {
+type CommentQueryResult = AsyncReturnType<typeof getComments>;
+
+const About: React.FC<{ comments: CommentQueryResult }> = (props) => {
   return (
     <>
       <Head>
@@ -35,31 +39,10 @@ const Home: NextPage = () => {
         <Box px={20}>
           <Stack>
             <FavThings />
+
             <HStack spacing={16}>
-              <Stack>
-                <Box pt={5}>
-                  <Text>Comments</Text>
-                  <HStack>
-                    <Input />
-                    <Button colorScheme={'whiteAlpha'}>Comment</Button>
-                  </HStack>
-                </Box>
-                <Box rounded={5} border='1px' borderColor='gray.200'>
-                  Card
-                </Box>
-              </Stack>
-              <Stack>
-                <Box pt={5}>
-                  <Text>Favourite cat fact</Text>
-                  <HStack>
-                    <Input />
-                    <Button colorScheme={'whiteAlpha'}>Comment</Button>
-                  </HStack>
-                </Box>
-                <Box rounded={5} border='1px' borderColor='gray.200'>
-                  Card
-                </Box>
-              </Stack>
+              <CommentForm comments={props.comments} />
+              <CatFactForm />
             </HStack>
           </Stack>
         </Box>
@@ -68,4 +51,15 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default About;
+
+const getComments = async () => {
+  return await prisma.comment.findMany({});
+};
+
+export const getStaticProps: GetServerSideProps = async () => {
+  const comments = await getComments();
+  console.log(comments);
+
+  return { props: { comments: comments } };
+};

@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import { Box, Link as ChakraLink, Stack, Heading } from '@chakra-ui/react';
+import { useState } from 'react';
 
 const HomeLink: React.FC<{ text: string; link: string }> = ({ text, link }) => (
   <Link href={link}>
@@ -18,6 +19,16 @@ const HomeLink: React.FC<{ text: string; link: string }> = ({ text, link }) => (
 );
 
 const Home: NextPage = () => {
+  const [huber, setHuber] = useState('false');
+
+  const theHuber = () => {
+    setHuber('true');
+  };
+
+  const unHuber = () => {
+    setHuber('false');
+  };
+
   return (
     <>
       <Head>
@@ -32,15 +43,32 @@ const Home: NextPage = () => {
           <ChakraLink>Juan Miguel Sanchez</ChakraLink>
         </Heading>
 
+        {huber}
+
         <Box pt={{ base: 0, md: 10 }}>
           <Stack>
-            <HomeLink link='/' text='Portfolio' />
-            <HomeLink link='about' text='About' />
+            <Box
+              onMouseEnter={(e) => theHuber()}
+              onMouseLeave={(e) => unHuber()}
+            >
+              <HomeLink link='/' text='Portfolio' />
+            </Box>
+            <Box
+              onMouseEnter={(e) => theHuber()}
+              onMouseLeave={(e) => unHuber()}
+            >
+              <HomeLink link='about' text='About' />
+            </Box>
             <HomeLink link='https://github.com/jmigsan' text='GitHub' />
-            <HomeLink
-              link='https://www.youtube.com/channel/UCR1zRpg1WYnGWdFlduV_CRg'
-              text='YouTube'
-            />
+            <Box
+              onMouseEnter={(e) => theHuber()}
+              onMouseLeave={(e) => unHuber()}
+            >
+              <HomeLink
+                link='https://www.youtube.com/channel/UCR1zRpg1WYnGWdFlduV_CRg'
+                text='YouTube'
+              />
+            </Box>
           </Stack>
         </Box>
       </Box>
