@@ -45,8 +45,8 @@ const Home: NextPage = () => {
 
         {huber}
 
-        <Box pt={{ base: 0, md: 10 }}>
-          <Stack>
+        <Box>
+          <Stack spacing={{ base: 0, md: 10 }}>
             <Box
               onMouseEnter={(e) => theHuber()}
               onMouseLeave={(e) => unHuber()}
@@ -59,7 +59,12 @@ const Home: NextPage = () => {
             >
               <HomeLink link='about' text='About' />
             </Box>
-            <HomeLink link='https://github.com/jmigsan' text='GitHub' />
+            <Box
+              onMouseEnter={(e) => theHuber()}
+              onMouseLeave={(e) => unHuber()}
+            >
+              <HomeLink link='https://github.com/jmigsan' text='GitHub' />
+            </Box>
             <Box
               onMouseEnter={(e) => theHuber()}
               onMouseLeave={(e) => unHuber()}
